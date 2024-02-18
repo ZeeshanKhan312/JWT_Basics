@@ -24,7 +24,7 @@ formDOM.addEventListener('submit', async (e) => {
     usernameInputDOM.value = ''
     passwordInputDOM.value = ''
 
-    localStorage.setItem('token', data.token)
+    localStorage.setItem('token', data.tokenNo)
     resultDOM.innerHTML = ''
     tokenDOM.textContent = 'token present'
     tokenDOM.classList.add('text-success')
@@ -49,9 +49,9 @@ btnDOM.addEventListener('click', async () => {
         Authorization: `Bearer ${token}`,
       },
     })
-    resultDOM.innerHTML = `<h5>${data.msg}</h5><p>${data.secret}</p>`
+    resultDOM.innerHTML = `<h5>${data.msg}</h5><p>${data.tokenNo}</p>`
 
-    data.secret
+    data.tokenNo
   } catch (error) {
     localStorage.removeItem('token')
     resultDOM.innerHTML = `<p>${error.response.data.msg}</p>`

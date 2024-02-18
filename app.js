@@ -6,11 +6,12 @@ const app = express();
 
 const notFoundMiddleware = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
+const router= require('./routes/jwtRoutes');
 
 // middleware
 app.use(express.static('./public'));
 app.use(express.json());
-
+app.use('/api/v1',router);
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
